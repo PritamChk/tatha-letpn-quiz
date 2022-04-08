@@ -57,7 +57,7 @@ export default {
   },
 computed:{},
 mounted() {
-    fetch("http://localhost:3000/data")
+    fetch("http://localhost:5000/data")
       .then((res) => res.json())
       .then((data) => (this.allQuiz = data[this.id-1].qustions))
       .catch((err) => onsole.log(err.message));
