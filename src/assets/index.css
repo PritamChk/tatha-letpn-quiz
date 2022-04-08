@@ -1,4 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.card { @apply  text-blue-400  hover:bg-gray-400 hover:text-white  p-10 m-8 rounded-lg transition ease-in ;}
+.card { @apply bg-cyan-500 shadow-lg shadow-cyan-500/50 text-black  hover:bg-gray-400 hover:text-white  p-10 m-8 rounded-lg transition ease-in ;}
