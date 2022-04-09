@@ -54,6 +54,10 @@
     <button class="btn" v-show="isSubmited" @click="redirect">
       Go To Quiz
     </button>
+    <!-- TODO: Add Restart Quiz Button -->
+    <!-- <button class="btn" v-show="isSubmited" @click="restartQuiz">
+      Restart Again
+    </button> -->
   </div>
 </template>
 
