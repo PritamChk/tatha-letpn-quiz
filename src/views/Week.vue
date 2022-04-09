@@ -1,9 +1,22 @@
-<template >
-  <form @submit.prevent="submitFun()" class="accent-pink-500 space-y-4 flex flex-col">
-    <div class=" bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md" v-for="(quiz, im) in allQuiz" :key="quiz.qno">
-      <h2 class="text-lg text-blue-700 font-bold">{{ quiz.qno }} . {{ quiz.statement }}</h2>
-      <div class="px-2 mx-1 py-3 shadow-md rounded-md my-4" v-for="(option, index) in quiz.options" :key="index">
-        <input 
+<template>
+  <form
+    @submit.prevent="submitFun()"
+    class="accent-pink-500 space-y-4 flex flex-col"
+  >
+    <div
+      class="bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
+      v-for="(quiz, im) in allQuiz"
+      :key="quiz.qno"
+    >
+      <h2 class="text-lg text-blue-700 font-bold">
+        {{ quiz.qno }} . {{ quiz.statement }}
+      </h2>
+      <div
+        class="px-2 mx-1 py-3 shadow-md rounded-md my-4"
+        v-for="(option, index) in quiz.options"
+        :key="index"
+      >
+        <input
           v-if="!isSubmited"
           type="radio"
           :name="quiz.qno"
@@ -11,18 +24,24 @@
           :id="option.value + quiz.qno"
           v-model="formValues[im]"
         />
-        <label class="px-5"  :for="option.value + quiz.qno">{{ option.value }}</label>
+        <label class="px-5" :for="option.value + quiz.qno">{{
+          option.value
+        }}</label>
       </div>
       <div v-show="isSubmited" class="font-semibold">
-        <div class="bg-yellow-300/50  rounded-sm shadow-sm pl-5 py-3 m-1">
+        <div class="bg-yellow-300/50 rounded-sm shadow-sm pl-5 py-3 m-1">
           <h2
             class="text-green-400"
             v-if="formValues[im].split(' ')[0] === 'true' ? true : false"
-          >You are correct</h2>
+          >
+            You are correct
+          </h2>
           <div v-else>
             <h2 class="text-red-500">You are wrong.</h2>
             <div v-for="(option, index) in quiz.options" :key="index">
-              <h2 class="text-green-400" v-if="option.is_correct">{{ option.value }}</h2>
+              <h2 class="text-green-400" v-if="option.is_correct">
+                {{ option.value }}
+              </h2>
             </div>
           </div>
         </div>
@@ -33,19 +52,15 @@
     </div>
   </form>
   <div class="flex justify-center">
-    <button 
-    class="btn"
-      v-show="isSubmited"
-      @click="redirect"
-    >
-    Go To Quiz
+    <button class="btn" v-show="isSubmited" @click="redirect">
+      Go To Quiz
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['id'],
+  props: ["id"],
   name: "Week",
   data() {
     return {
@@ -63,7 +78,6 @@ export default {
         8: "",
         9: "",
       },
-
     };
   },
   computed: {},
@@ -74,24 +88,22 @@ export default {
       .catch((err) => onsole.log(err.message));
   },
   methods: {
-
     submitFun() {
       this.isSubmited = true;
     },
-    redirect(){
+    redirect() {
       this.$router.push({
-        name : 'Quiz'
-      })
-    }
+        name: "Quiz",
+      });
+    },
   },
   computed: {
     shuffleArray(inputArray) {
       if (!this.isSubmited) return inputArray.sort(() => Math.random() - 0.5);
       else return inputArray;
     },
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
