@@ -6,21 +6,22 @@
         <input
           type="radio"
           :name="quiz.qno"
-          :value="option.is_correct+' '+option.value"
-          :id="option.value+quiz.qno"
+          :value="option.is_correct + ' ' + option.value"
+          :id="option.value + quiz.qno"
           v-model="formValues[im]"
         />
-        <label :for="option.value+quiz.qno">{{ option.value }}</label>
+        <label :for="option.value + quiz.qno">{{ option.value }}</label>
       </div>
       <div v-show="isSubmited">
         <div>
-          <h2 class="correct" v-if="formValues[im].split(' ')[0] === 'true' ? true : false">You are correct</h2>
+          <h2
+            class="correct"
+            v-if="formValues[im].split(' ')[0] === 'true' ? true : false"
+          >You are correct</h2>
           <div v-else>
             <h2 class="wrong">You are wrong.</h2>
             <div v-for="(option, index) in quiz.options" :key="index">
-              <h2 class="correct" v-if="option.is_correct">
-                {{ option.value }}
-              </h2>
+              <h2 class="correct" v-if="option.is_correct">{{ option.value }}</h2>
             </div>
           </div>
         </div>
@@ -34,7 +35,7 @@
 
 <script>
 export default {
-  props:['id'],
+  props: ['id'],
   name: "Week",
   data() {
     return {
@@ -55,55 +56,55 @@ export default {
 
     };
   },
-computed:{},
-mounted() {
+  computed: {},
+  mounted() {
     fetch("http://localhost:5000/data")
       .then((res) => res.json())
-      .then((data) => (this.allQuiz = data[this.id-1].qustions))
+      .then((data) => (this.allQuiz = data[this.id - 1].qustions))
       .catch((err) => onsole.log(err.message));
-    },
-methods: {
+  },
+  methods: {
 
     submitFun() {
       this.isSubmited = true;
     },
   },
-computed:{
+  computed: {
     shuffleArray(inputArray) {
       if (!this.isSubmited) return inputArray.sort(() => Math.random() - 0.5);
       else return inputArray;
     },
-}
+  }
 }
 </script>
 
 <style scoped>
-form{
-max-width: 900px;
-margin: 30px auto;
-background:white;
-text-align: left;
-padding: 40px;
-border-radius: 10px;
+form {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  text-align: left;
+  padding: 40px;
+  border-radius: 10px;
 }
-label{
-color: black;
-display: inline-block; 
-margin: 25px 0 15px; 
-font-size: 1em; 
-text-transform: uppercase; 
-font-weight: bold;
-letter-spacing: 1px;
-font-weight: bold;
+label {
+  color: black;
+  display: inline-block;
+  margin: 25px 0 15px;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
-input{
+input {
   padding: 10px;
 }
-button{
+button {
   padding: 10px 20px;
   color: white;
   font-weight: bold;
-  background:blue;
+  background: blue;
   border-radius: 10px;
   text-align: middle;
 }
@@ -111,7 +112,7 @@ button{
   color: green;
   font-weight: bold;
 }
-.wrong{
+.wrong {
   color: red;
   font-weight: bold;
 }
