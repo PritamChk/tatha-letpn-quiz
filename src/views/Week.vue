@@ -4,30 +4,29 @@
     class="accent-pink-500 space-y-4 flex flex-col"
   >
     <div
-      class="bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
+      class="flex flex-col bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
       v-for="(quiz, im) in allQuiz"
       :key="quiz.qno"
     >
       <h2 class="text-lg text-blue-700 font-bold">
         {{ quiz.qno }} . {{ quiz.statement }}
       </h2>
-      <div
-        class="px-2 mx-1 py-3 shadow-md rounded-md my-4"
+      <template
         v-for="(option, index) in quiz.options"
         :key="index"
       >
+        <label class="px-2 mx-1 py-2 shadow-md rounded-md my-1 hover:bg-blue-400/25" :for="option.value + quiz.qno">
         <input
           v-if="!isSubmited"
           type="radio"
           :name="quiz.qno"
           :value="option.is_correct + ' ' + option.value"
-          :id="option.value + quiz.qno"
           v-model="formValues[im]"
+          :id="option.value + quiz.qno"
         />
-        <label class="px-5" :for="option.value + quiz.qno">{{
-          option.value
-        }}</label>
-      </div>
+          {{option.value}}
+        </label>
+      </template>
       <div v-show="isSubmited" class="font-semibold">
         <div class="bg-yellow-300/50 rounded-sm shadow-sm pl-5 py-3 m-1">
           <h2

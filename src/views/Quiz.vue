@@ -1,6 +1,6 @@
 <template class="bg-black">
-<div class="flex flex-wrap overflow-hidden ">
-    <div class ="card sm:flex-1" v-for="week in weeks" :key="week">
+<div class="flex flex-wrap">
+    <div class ="card" v-for="week in weeks" :key="week">
         <router-link :to="{name : 'Week' , params: {id: week}}">
             <h2 class="text-lg ">week-{{week}}</h2>
         </router-link>
