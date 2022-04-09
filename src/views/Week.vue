@@ -1,9 +1,10 @@
 <template>
-  <form @submit.prevent="submitFun()" class="accent-green-500 space-y-4 flex flex-col">
-    <div class="justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-sm" v-for="(quiz, im) in allQuiz" :key="quiz.qno">
-      <h2 class="text-lg text-green-700">{{ quiz.qno }} . {{ quiz.statement }}</h2>
+  <form @submit.prevent="submitFun()" class="accent-pink-500 space-y-4 flex flex-col">
+    <div class="justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md" v-for="(quiz, im) in allQuiz" :key="quiz.qno">
+      <h2 class="text-lg text-blue-700 font-bold">{{ quiz.qno }} . {{ quiz.statement }}</h2>
       <div v-for="(option, index) in quiz.options" :key="index">
-        <input
+        <input 
+          v-if="!isSubmited"
           type="radio"
           :name="quiz.qno"
           :value="option.is_correct + ' ' + option.value"
@@ -13,15 +14,15 @@
         <label :for="option.value + quiz.qno">{{ option.value }}</label>
       </div>
       <div v-show="isSubmited">
-        <div>
+        <div class="bg-yellow-200/50 rounded-sm shadow-sm pl-5 py-3 m-1">
           <h2
-            class="correct"
+            class="text-green-400"
             v-if="formValues[im].split(' ')[0] === 'true' ? true : false"
           >You are correct</h2>
           <div v-else>
-            <h2 class="wrong">You are wrong.</h2>
+            <h2 class="text-red-500">You are wrong.</h2>
             <div v-for="(option, index) in quiz.options" :key="index">
-              <h2 class="correct" v-if="option.is_correct">{{ option.value }}</h2>
+              <h2 class="text-green-400" v-if="option.is_correct">{{ option.value }}</h2>
             </div>
           </div>
         </div>
@@ -79,41 +80,4 @@ export default {
 </script>
 
 <style scoped>
-/* form {
-  max-width: 900px;
-  margin: 30px auto;
-  background: white;
-  text-align: left;
-  padding: 40px;
-  border-radius: 10px;
-}
-label {
-  color: black;
-  display: inline-block;
-  margin: 25px 0 15px;
-  font-size: 1em;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
-input {
-  padding: 10px;
-}
-button {
-  padding: 10px 20px;
-  color: white;
-  font-weight: bold;
-  background: blue;
-  border-radius: 10px;
-  text-align: middle;
-}*/
-.correct {
-  color: green;
-  font-weight: bold;
-}
-.wrong {
-  color: red;
-  font-weight: bold;
-} 
 </style>
