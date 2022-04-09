@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="submitFun()">
-    <div v-for="(quiz, im) in allQuiz" :key="quiz.qno">
-      <h2>{{ quiz.qno }} . {{ quiz.statement }}</h2>
+  <form @submit.prevent="submitFun()" class="accent-green-500 space-y-4 flex flex-col">
+    <div class="justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-sm" v-for="(quiz, im) in allQuiz" :key="quiz.qno">
+      <h2 class="text-lg text-green-700">{{ quiz.qno }} . {{ quiz.statement }}</h2>
       <div v-for="(option, index) in quiz.options" :key="index">
         <input
           type="radio"
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div>
-      <button v-if="!isSubmited">Submit</button>
+      <button class="transition-all duration-200 ease-in-out rounded-lg px-10 py-2 my-5 bg-lime-500 text-white hover:bg-lime-300 hover:text-slate-600" v-if="!isSubmited">Submit</button>
     </div>
   </form>
 </template>
@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style scoped>
-form {
+/* form {
   max-width: 900px;
   margin: 30px auto;
   background: white;
@@ -107,7 +107,7 @@ button {
   background: blue;
   border-radius: 10px;
   text-align: middle;
-}
+}*/
 .correct {
   color: green;
   font-weight: bold;
@@ -115,5 +115,5 @@ button {
 .wrong {
   color: red;
   font-weight: bold;
-}
+} 
 </style>
