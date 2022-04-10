@@ -15,9 +15,14 @@
         v-for="(option, index) in quiz.options"
         :key="index"
       >
-        <label class="px-2 mx-1 py-2 shadow-md rounded-md my-1 hover:bg-blue-400/25" :for="option.value + quiz.qno">
+          <!-- v-if="!isSubmited" -->
+        <label 
+          class="px-2 mx-1 py-2 shadow-md rounded-md my-1 hover:bg-blue-400/25" 
+          :for="option.value + quiz.qno"
+          :class="[{'bg-green-400':isSubmited && option.is_correct},{'animate-pulse': option.is_correct},'font-bold']"
+        >
         <input
-          v-if="!isSubmited"
+          :disabled="isSubmited"
           type="radio"
           :name="quiz.qno"
           :value="option.is_correct + ' ' + option.value"
@@ -69,6 +74,7 @@ export default {
     return {
       allQuiz: [],
       isSubmited: false,
+      selected_radio : [],
       formValues: {
         0: "",
         1: "",
