@@ -19,7 +19,7 @@
         <label 
           class="px-2 mx-1 py-2 shadow-md rounded-md my-1 hover:bg-blue-400/25" 
           :for="option.value + quiz.qno"
-          :class="[{'bg-green-400':isSubmited && option.is_correct},{'animate-pulse': option.is_correct},'font-bold']"
+          :class="[{'bg-green-400':isSubmited && option.is_correct},{'animate-pulse': isSubmited && option.is_correct},'font-bold']"
         >
         <input
           :disabled="isSubmited"
