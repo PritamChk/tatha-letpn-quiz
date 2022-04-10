@@ -5,7 +5,7 @@
   >
     <div
       class="flex flex-col bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
-      v-for="(quiz, im) in allQuiz"
+      v-for="(quiz, qus_index) in allQuiz"
       :key="quiz.qno"
     >
       <h2 class="text-lg text-blue-700 font-bold">
@@ -21,7 +21,7 @@
           type="radio"
           :name="quiz.qno"
           :value="option.is_correct + ' ' + option.value"
-          v-model="formValues[im]"
+          v-model="formValues[qus_index]"
           :id="option.value + quiz.qno"
         />
           {{option.value}}
@@ -31,7 +31,7 @@
         <div class="bg-yellow-300/50 rounded-sm shadow-sm pl-5 py-3 m-1">
           <h2
             class="text-green-400"
-            v-if="formValues[im].split(' ')[0] === 'true' ? true : false"
+            v-if="formValues[qus_index].split(' ')[0] === 'true' ? true : false"
           >
             You are correct
           </h2>
