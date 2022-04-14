@@ -5,7 +5,7 @@
     class="absolute top-0 object-fill h-screen w-screen filter blur-sm"
   />
   <div
-    class="flex flex-row mb-2 py-2 text-center justify-center font-bold text-white bg-opacity-40 backdrop-filter backdrop-blur-md shadow-lg rounded-br-2xl rounded-bl-2xl"
+    class="sticky top-0 z-50 flex flex-row mb-2 py-2 text-center justify-center font-bold text-white bg-opacity-40 backdrop-filter backdrop-blur-md shadow-lg rounded-br-2xl rounded-bl-2xl"
   >
     <router-link
       to="/"
