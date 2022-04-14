@@ -3,10 +3,10 @@
 @tailwind utilities;
 .card {
   @apply bg-cyan-500 shadow-lg 
-    shadow-cyan-500/50 text-black  
-    hover:bg-pink-500 hover:text-white  
-    p-10 m-8 rounded-lg transition ease-in sm:flex-1 
-    flex-auto;
+    shadow-cyan-500/50
+    hover:bg-slate-500/20 hover:text-white  
+    p-10 m-8 rounded-lg transition ease-in sm:flex-1  hover:scale-110
+    flex-auto text-lg font-medium text-center text-white backdrop-filter backdrop-blur-md bg-transparent;
 }
 .btn {
   @apply transition-all 

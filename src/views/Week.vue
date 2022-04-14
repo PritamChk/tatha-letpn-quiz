@@ -1,41 +1,37 @@
 <template>
   <form
     @submit.prevent="submitFun()"
-    class="accent-pink-500 space-y-4 flex flex-col"
+    class="absolute top-0 accent-pink-500 space-y-4 flex flex-col z-10"
   >
     <div
-      class="flex flex-col bg-slate-50 text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
+      class="flex flex-col bg-slate-50/50 backdrop-filter backdrop-blur-md text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
       v-for="(quiz, qus_index) in allQuiz"
       :key="quiz.qno"
     >
       <h2 class="text-lg text-blue-700 font-bold">
         {{ quiz.qno }} . {{ quiz.statement }}
       </h2>
-      <template
-        v-for="(option, index) in quiz.options"
-        :key="index"
-      >
-          <!-- v-if="!isSubmited" -->
-        <label 
-          class="px-2 mx-1 py-2 shadow-md rounded-md my-1" 
+      <template v-for="(option, index) in quiz.options" :key="index">
+        <!-- v-if="!isSubmited" -->
+        <label
+          class="px-2 mx-1 py-2 shadow-md rounded-md my-1"
           :for="option.value + quiz.qno"
-  
           :class="[
-          {'bg-green-400':isSubmited && option.is_correct},
-          {'animate-pulse': isSubmited && option.is_correct},
-          {'font-bold':isSubmited},
-          {'hover:bg-blue-400/25':!isSubmited}
+            { 'bg-green-400': isSubmited && option.is_correct },
+            { 'animate-pulse': isSubmited && option.is_correct },
+            { 'font-bold': isSubmited },
+            { 'hover:bg-blue-400/25': !isSubmited },
           ]"
         >
-        <input
-          :disabled="isSubmited"
-          type="radio"
-          :name="quiz.qno"
-          :value="option.is_correct + ' ' + option.value"
-          v-model="formValues[qus_index]"
-          :id="option.value + quiz.qno"
-        />
-          {{option.value}}
+          <input
+            :disabled="isSubmited"
+            type="radio"
+            :name="quiz.qno"
+            :value="option.is_correct + ' ' + option.value"
+            v-model="formValues[qus_index]"
+            :id="option.value + quiz.qno"
+          />
+          {{ option.value }}
         </label>
       </template>
       <div v-show="isSubmited" class="font-semibold">
@@ -60,16 +56,16 @@
     <div class="flex justify-center">
       <button class="btn" v-if="!isSubmited">Submit</button>
     </div>
-  </form>
-  <div class="flex justify-center">
-    <button class="btn" v-show="isSubmited" @click="redirect">
-      Go To Quiz
-    </button>
-    <!-- TODO: Add Restart Quiz Button -->
-    <!-- <button class="btn" v-show="isSubmited" @click="restartQuiz">
+    <div class="flex justify-center">
+      <button class="btn z-10" v-show="isSubmited" @click="redirect">
+        Go To Quiz
+      </button>
+      <!-- TODO: Add Restart Quiz Button -->
+      <!-- <button class="btn" v-show="isSubmited" @click="restartQuiz">
       Restart Again
     </button> -->
-  </div>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -80,7 +76,7 @@ export default {
     return {
       allQuiz: [],
       isSubmited: false,
-      selected_radio : [],
+      selected_radio: [],
       formValues: {
         0: "",
         1: "",
