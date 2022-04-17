@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="submitFun()"
-    class="absolute top-0 accent-pink-500 space-y-4 flex flex-col z-10"
+    class="absolute top-0 accent-pink-500 space-y-4 flex flex-col z-10 mt-20 mx-auto w-full font-semibold"
   >
     <div
       class="flex flex-col bg-slate-50/50 backdrop-filter backdrop-blur-md text-black justify-evenly text-left px-10 py-3 mx-10 shadow-md shadow-green-200/50 rounded-md"
@@ -35,7 +35,7 @@
         </label>
       </template>
       <div v-show="isSubmited" class="font-semibold">
-        <div class="bg-yellow-300/50 rounded-sm shadow-sm pl-5 py-3 m-1">
+        <div class="border-l-8 border-yellow-600 bg-slate-700 rounded-lg shadow-sm pl-5 py-3 m-1">
           <h2
             class="text-green-400"
             v-if="formValues[qus_index].split(' ')[0] === 'true' ? true : false"
@@ -43,9 +43,9 @@
             You are correct
           </h2>
           <div v-else>
-            <h2 class="text-red-500">You are wrong.</h2>
+            <h2 class="text-red-500 font-bold">You are wrong.</h2>
             <div v-for="(option, index) in quiz.options" :key="index">
-              <h2 class="text-green-400" v-if="option.is_correct">
+              <h2 class="text-white" v-if="option.is_correct">
                 {{ option.value }}
               </h2>
             </div>
