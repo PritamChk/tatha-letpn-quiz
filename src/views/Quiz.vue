@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Week from "./Week.vue";
+import Week from './Week.vue';
 export default {
-  name: "Quiz",
+  name: 'Quiz',
   components: {
     Week,
   },
@@ -22,5 +22,5 @@ export default {
       weeks: 12,
     };
   },
-};  
+};
 </script>

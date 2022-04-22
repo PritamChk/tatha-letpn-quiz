@@ -1,18 +1,18 @@
-import { createRouter, createWebHistory ,createWebHashHistory} from 'vue-router'
-import Home from '../views/Home.vue'
-import Quiz from '../views/Quiz.vue'
-import Week from '../views/Week.vue'
+import {createRouter, createWebHistory, createWebHashHistory} from 'vue-router';
+import Home from '../views/Home.vue';
+import Quiz from '../views/Quiz.vue';
+import Week from '../views/Week.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/quiz',
     name: 'Quiz',
-    component: Quiz
+    component: Quiz,
   },
   {
     path: '/quiz/week-:id',
@@ -20,11 +20,11 @@ const routes = [
     component: Week,
     props: true,
   },
-]
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

@@ -35,7 +35,9 @@
         </label>
       </template>
       <div v-show="isSubmited" class="font-semibold">
-        <div class="border-l-8 border-yellow-600 bg-slate-700 rounded-lg shadow-sm pl-5 py-3 m-1">
+        <div
+          class="border-l-8 border-yellow-600 bg-slate-700 rounded-lg shadow-sm pl-5 py-3 m-1"
+        >
           <h2
             class="text-green-400"
             v-if="formValues[qus_index].split(' ')[0] === 'true' ? true : false"
@@ -57,9 +59,7 @@
       <button class="btn" v-if="!isSubmited">Submit</button>
     </div>
     <div class="flex justify-center">
-      <button class="btn z-10" v-show="isSubmited" @click="redirect">
-        Go To Quiz
-      </button>
+      <button class="btn z-10" v-show="isSubmited" @click="redirect">Go To Quiz</button>
       <!-- TODO: Add Restart Quiz Button -->
       <!-- <button class="btn" v-show="isSubmited" @click="restartQuiz">
       Restart Again
@@ -70,33 +70,33 @@
 
 <script>
 export default {
-  props: ["id"],
-  name: "Week",
+  props: ['id'],
+  name: 'Week',
   data() {
     return {
       allQuiz: [],
       isSubmited: false,
       selected_radio: [],
       formValues: {
-        0: "",
-        1: "",
-        2: "",
-        3: "",
-        4: "",
-        5: "",
-        6: "",
-        7: "",
-        8: "",
-        9: "",
+        0: '',
+        1: '',
+        2: '',
+        3: '',
+        4: '',
+        5: '',
+        6: '',
+        7: '',
+        8: '',
+        9: '',
       },
     };
   },
   computed: {},
   mounted() {
-    fetch("http://localhost:3000/data")
-      .then((res) => res.json())
-      .then((data) => (this.allQuiz = data[this.id - 1].qustions))
-      .catch((err) => onsole.log(err.message));
+    fetch('http://localhost:3000/data')
+        .then((res) => res.json())
+        .then((data) => (this.allQuiz = data[this.id - 1].qustions))
+        .catch((err) => onsole.log(err.message));
   },
   methods: {
     submitFun() {
@@ -104,7 +104,7 @@ export default {
     },
     redirect() {
       this.$router.push({
-        name: "Quiz",
+        name: 'Quiz',
       });
     },
   },
