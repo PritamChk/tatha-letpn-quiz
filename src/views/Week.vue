@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 <template>
   <form
     @submit.prevent="submitFun()"
@@ -70,33 +71,33 @@
 
 <script>
 export default {
-  props: ['id'],
-  name: 'Week',
+  props: ["id"],
+  name: "Week",
   data() {
     return {
       allQuiz: [],
       isSubmited: false,
       selected_radio: [],
       formValues: {
-        0: '',
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
+        0: "",
+        1: "",
+        2: "",
+        3: "",
+        4: "",
+        5: "",
+        6: "",
+        7: "",
+        8: "",
+        9: "",
       },
     };
   },
   computed: {},
   mounted() {
-    fetch('http://localhost:3000/data')
-        .then((res) => res.json())
-        .then((data) => (this.allQuiz = data[this.id - 1].qustions))
-        .catch((err) => onsole.log(err.message));
+    fetch("http://localhost:3000/data")
+      .then((res) => res.json())
+      .then((data) => (this.allQuiz = data[this.id - 1].qustions))
+      .catch((err) => onsole.log(err.message));
   },
   methods: {
     submitFun() {
@@ -104,7 +105,7 @@ export default {
     },
     redirect() {
       this.$router.push({
-        name: 'Quiz',
+        name: "Quiz",
       });
     },
   },
