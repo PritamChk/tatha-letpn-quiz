@@ -1,3 +1,4 @@
+/* eslint-disable vue/multi-word-component-names */ /* eslint-disable max-len */
 /* eslint-disable max-len */
 <template>
   <form
@@ -60,7 +61,9 @@
       <button class="btn" v-if="!isSubmited">Submit</button>
     </div>
     <div class="flex justify-center">
-      <button class="btn z-10" v-show="isSubmited" @click="redirect">Go To Quiz</button>
+      <button class="btn z-10" v-show="isSubmited" @click="redirect">
+        Go To Quiz
+      </button>
       <!-- TODO: Add Restart Quiz Button -->
       <!-- <button class="btn" v-show="isSubmited" @click="restartQuiz">
       Restart Again
